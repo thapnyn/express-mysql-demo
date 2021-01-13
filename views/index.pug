@@ -1,0 +1,19 @@
+html(lang='en')
+  head
+    title Template Pug TodoMVC
+    link(rel="stylesheet", href="./css/styles.css")
+  body
+    .box-task
+      h3 List task
+      .gp-add-task
+        form.form(action="/tasks", method="post", autocomplete="off")
+          input.ipt(type="text", placeholder="Task...", name="task")
+          button(type="submit") Add task
+      .gp-list-task
+        each task in tasks
+          if task.status == 0
+            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask();", checked)
+          else
+            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask();")
+          label(for=task.id)= task.title
+    script(src='/js/index.js')

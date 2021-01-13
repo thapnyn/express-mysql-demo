@@ -2,9 +2,16 @@
 
 var Task = require('../models/todoModel.js');
 
+exports.show_list_all_tasks = function(req, res) {
+  Task.getAllTask(function(err, task) {
+    if (err)
+      res.send(err);
+    res.render('index', {tasks: task});
+  });
+};
+
 exports.list_all_tasks = function(req, res) {
   Task.getAllTask(function(err, task) {
-    console.log('controllers')
     if (err)
       res.send(err);
     res.send(task);
@@ -13,16 +20,17 @@ exports.list_all_tasks = function(req, res) {
 
 
 exports.create_a_task = function(req, res) {
-  var new_task = new Task(req.body);
+  var new_task = {title: req.body.task, status: 1};
 
   //handles null error
-  if(!new_task.task || !new_task.status){
+  if(!new_task.title || !new_task.status){
     res.status(400).send({ error:true, message: 'Please provide task/status' });
   } else {
     Task.createTask(new_task, function(err, task) {
       if (err)
         res.send(err);
-      res.json(task);
+      // res.json(task);
+      res.redirect('/');
     });
   }
 };

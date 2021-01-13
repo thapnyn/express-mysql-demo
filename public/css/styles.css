@@ -1,36 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: #e8ebf3;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg") center center no-repeat;
+  background-size: cover;
+  width: 100vw;
   height: 100vh;
-  font: 400 16px 'Varela Round', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
   align-items: center;
+  justify-items: center;
+  font-family: "Fjalla One";
 }
-.container {
+
+.box-task {
+  background: #f8f4e5;
+  padding: 20px 30px;
+  border: 2px solid black;
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+}
+
+.box-task h3 {
+  font-size: 18pt;
+  margin-bottom: 20px;
+}
+
+.form input {
+  display: block;
   width: 100%;
+  font-size: 12pt;
+  line-height: 20pt;
+  font-family: "Fjalla One";
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 5px solid black;
+  background: #f8f4e5;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
 }
-#checklist {
-  --background: #fff;
+
+.form input:focus {
+  border-bottom: 5px solid #ffa580;
+}
+
+.form button {
+  display: block;
+  margin: 0;
+  line-height: 22pt;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px black;
+}
+
+.form button:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.form ::selection {
+  background: #ffc8ff;
+}
+
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover,
+.form input:-webkit-autofill:focus {
+  border-bottom: 5px solid #95a4ff;
+  -webkit-text-fill-color: #2A293E;
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.gp-list-task {
+  --background:#f8f4e5;
   --text: #414856;
   --check: #4f29f0;
   --disabled: #c3c8de;
   --width: 50%;
   --height: 140px;
   --border-radius: 10px;
-  background: var(--background);
-  width: var(--width);
-  height: var(--height);
-  border-radius: var(--border-radius);
-  position: relative;
-  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
-  padding: 30px 45px;
   display: grid;
   grid-template-columns: 30px auto;
   align-items: center;
-  margin: 0 auto;
+  margin-top: 30px;
 }
-#checklist label {
+
+.gp-list-task label {
   color: var(--text);
   position: relative;
   cursor: pointer;
@@ -39,11 +101,11 @@ body {
   width: fit-content;
   transition: color 0.3s ease;
 }
-#checklist label::before, #checklist label::after {
+.gp-list-task label::before, .gp-list-task label::after {
   content: "";
   position: absolute;
 }
-#checklist label::before {
+.gp-list-task label::before {
   height: 2px;
   width: 8px;
   left: -27px;
@@ -51,14 +113,14 @@ body {
   border-radius: 2px;
   transition: background 0.3s ease;
 }
-#checklist label:after {
+.gp-list-task label:after {
   height: 4px;
   width: 4px;
   top: 8px;
   left: -25px;
   border-radius: 50%;
 }
-#checklist input[type="checkbox"] {
+.gp-list-task input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   position: relative;
@@ -72,7 +134,7 @@ body {
   display: grid;
   align-items: center;
 }
-#checklist input[type="checkbox"]::before, #checklist input[type="checkbox"]::after {
+.gp-list-task input[type="checkbox"]::before, .gp-list-task input[type="checkbox"]::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -80,31 +142,31 @@ body {
   background: var(--check);
   border-radius: 2px;
 }
-#checklist input[type="checkbox"]::before {
+.gp-list-task input[type="checkbox"]::before {
   width: 0px;
   right: 60%;
   transform-origin: right bottom;
 }
-#checklist input[type="checkbox"]::after {
+.gp-list-task input[type="checkbox"]::after {
   width: 0px;
   left: 40%;
   transform-origin: left bottom;
 }
-#checklist input[type="checkbox"]:checked::before {
+.gp-list-task input[type="checkbox"]:checked::before {
   animation: check-01 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked::after {
+.gp-list-task input[type="checkbox"]:checked::after {
   animation: check-02 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked + label {
+.gp-list-task input[type="checkbox"]:checked + label {
   color: var(--disabled);
   animation: move 0.3s ease 0.1s forwards;
 }
-#checklist input[type="checkbox"]:checked + label::before {
+.gp-list-task input[type="checkbox"]:checked + label::before {
   background: var(--disabled);
   animation: slice 0.4s ease forwards;
 }
-#checklist input[type="checkbox"]:checked + label::after {
+.gp-list-task input[type="checkbox"]:checked + label::after {
   animation: firework 0.5s ease forwards 0.1s;
 }
 @keyframes move {
@@ -183,4 +245,3 @@ body {
     opacity: 0;
     box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
  }
-}

@@ -3,6 +3,9 @@ module.exports = function(app) {
 
   var todoList = require('../controllers/todoListController');
 
+  app.route('/')
+    .get(todoList.show_list_all_tasks);
+
   // todoList Routes
   app.route('/tasks')
     .get(todoList.list_all_tasks)

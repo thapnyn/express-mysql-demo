@@ -4,7 +4,7 @@ var sql = require('./db.js');
 
 //Task object constructor
 var Task = function(task){
-  this.task = task.task;
+  this.task = task.title;
   this.status = task.status;
   this.created_at = new Date();
 };
@@ -42,8 +42,8 @@ Task.getAllTask = function (result) {
   });
 };
 
-Task.updateById = function(id, task, result) {
-  sql.query("UPDATE tasks SET task = ? WHERE id = ?", [task.task, id], function (err, res) {
+Task.updateById = function(id, result) {
+  sql.query("UPDATE tasks SET status = 1 WHERE id = ?", [id], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);

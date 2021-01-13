@@ -1,7 +1,6 @@
 const
   express = require('express'),
   app = express(),
-  path = require('path'),
   bodyParser = require('body-parser'),
   port = process.env.PORT || 8000;
 
@@ -9,15 +8,14 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.get('/', function(req, res) {
-//   res.sendFile(path.resolve(__dirname,'views') + '/index.html');
-// });
+// Set view engine
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 app.listen(port);
-console.log('API server started on: ' + port);
 
-//importing route
+// Importing route
 var routes = require('./app/routes/appRoutes');
 
-//register the route
+// Register the route
 routes(app);
