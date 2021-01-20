@@ -12,8 +12,10 @@ html(lang='en')
       .gp-list-task
         each task in tasks
           if task.status == 0
-            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask();", checked)
+            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask("+task.id+");", checked)
           else
-            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask();")
+            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask("+task.id+");")
           label(for=task.id)= task.title
-    script(src='/js/index.js')
+          //- span Remove
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+    script(src='/js/main.js')

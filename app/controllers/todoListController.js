@@ -46,7 +46,7 @@ exports.read_a_task = function(req, res) {
 
 
 exports.update_a_task = function(req, res) {
-  Task.updateById(req.params.taskId, new Task(req.body), function(err, task) {
+  Task.updateById(req.params.taskId, function(err, task) {
     if (err)
       res.send(err);
     res.json({ message: 'Task successfully updated' });

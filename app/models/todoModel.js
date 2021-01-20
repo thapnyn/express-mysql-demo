@@ -21,7 +21,7 @@ Task.createTask = function (newTask, result) {
 };
 
 Task.getTaskById = function (taskId, result) {
-  sql.query("Select task from tasks where id = ? ", taskId, function (err, res) {
+  sql.query("Select * from tasks where id = ? ", taskId, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -43,7 +43,7 @@ Task.getAllTask = function (result) {
 };
 
 Task.updateById = function(id, result) {
-  sql.query("UPDATE tasks SET status = 1 WHERE id = ?", [id], function (err, res) {
+  sql.query("UPDATE tasks SET status = CASE WHEN status = 1 THEN 0 ELSE 1 END WHERE id = ?", [id], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
