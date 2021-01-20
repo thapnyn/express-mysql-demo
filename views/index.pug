@@ -7,15 +7,18 @@ html(lang='en')
       h3 List task
       .gp-add-task
         form.form(action="/tasks", method="post", autocomplete="off")
-          input.ipt(type="text", placeholder="Task...", name="task")
+          input.ipt(type="text", placeholder="Task...", maxlength="50", name="task")
           button(type="submit") Add task
       .gp-list-task
         each task in tasks
-          if task.status == 0
-            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask("+task.id+");", checked)
-          else
-            input(id=task.id, type="checkbox", name=task.title, value=task.title, onclick="checkTask("+task.id+");")
-          label(for=task.id)= task.title
+          .ipt-wrapper
+            if task.status == 0
+              input.ipt-task-item(id=task.id, type="checkbox", name=task.title, value=task.title, checked)
+            else
+              input.ipt-task-item(id=task.id, type="checkbox", name=task.title, value=task.title)
+            label(for=task.id)= task.title
+            span.remove.del-task-item
+
           //- span Remove
     script(src='https://code.jquery.com/jquery-3.5.1.min.js')
     script(src='/js/main.js')

@@ -75,6 +75,7 @@ body {
   border-bottom: 5px solid #95a4ff;
   -webkit-text-fill-color: #2A293E;
   -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  box-shadow: 0 0 0px 1000px #f8f4e5 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -86,17 +87,37 @@ body {
   --width: 50%;
   --height: 140px;
   --border-radius: 10px;
-  display: grid;
-  grid-template-columns: 30px auto;
   align-items: center;
   margin-top: 30px;
 }
 
+.gp-list-task .ipt-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  padding-right: 20px;
+}
+.gp-list-task .ipt-wrapper .remove {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  background-image: url('../img/times-solid.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  visibility: hidden;
+}
+.gp-list-task .ipt-wrapper:hover .remove {
+  visibility: visible;
+}
 .gp-list-task label {
   color: var(--text);
   position: relative;
   cursor: pointer;
-  display: grid;
+  display: flex;
   align-items: center;
   width: fit-content;
   transition: color 0.3s ease;
@@ -131,7 +152,6 @@ body {
   margin: 0 15px 0 0;
   cursor: pointer;
   background: var(--background);
-  display: grid;
   align-items: center;
 }
 .gp-list-task input[type="checkbox"]::before, .gp-list-task input[type="checkbox"]::after {
@@ -245,3 +265,4 @@ body {
     opacity: 0;
     box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
  }
+}

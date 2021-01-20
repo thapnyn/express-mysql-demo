@@ -7,11 +7,11 @@ var mysql = require('mysql');
 
 // local mysql db connection
 var connection = mysql.createConnection({
-  socketPath: "/opt/lampp/var/mysql/mysql.sock",
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  post: process.env.DB_PORT
 });
 
 connection.connect(function(err) {

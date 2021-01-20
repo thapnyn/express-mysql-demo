@@ -4,13 +4,13 @@ var sql = require('./db.js');
 
 //Task object constructor
 var Task = function(task){
-  this.task = task.title;
+  this.title = task.title;
   this.status = task.status;
   this.created_at = new Date();
 };
 
 Task.createTask = function (newTask, result) {
-  sql.query("INSERT INTO tasks set ?", newTask, function (err, res) {
+  sql.query("INSERT INTO tasks set ? ", newTask, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
