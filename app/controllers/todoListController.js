@@ -3,18 +3,19 @@
 var Task = require('../models/todoModel.js');
 
 exports.show_list_all_tasks = function(req, res) {
-  Task.getAllTask(function(err, task) {
+  Task.getAllTask(function(err, tasks) {
     if (err)
       res.send(err);
-    res.render('index', {tasks: task});
+    res.render('index', {tasks: tasks});
+
   });
 };
 
 exports.list_all_tasks = function(req, res) {
-  Task.getAllTask(function(err, task) {
+  Task.getAllTask(function(err, tasks) {
     if (err)
       res.send(err);
-    res.send(task);
+    res.send(tasks);
   });
 };
 

@@ -17,7 +17,9 @@ Task.createTask = function (newTask, result) {
     } else {
       result(null, res.insertId);
     }
+    console.log(this.sql);
   });
+  
 };
 
 Task.getTaskById = function (taskId, result) {
@@ -28,6 +30,7 @@ Task.getTaskById = function (taskId, result) {
     } else {
       result(null, res);
     }
+    
   });
 };
 
