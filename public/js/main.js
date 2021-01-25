@@ -26,14 +26,14 @@ var DeleteTask = {
     var _this = this;
     $(_this.delTask).click((e) => {
       // let id = e.target.parentNode.firstChild.id;
-      // this._delete(id);
+      this._delete(9);
       console.log('>> delete');
     });
   },
 
   _delete: function(id) {
     var _this = this;
-    console.log(_this);
+    console.log($(_this.checkTaskIpt).find('#' + id));
     // $.ajax({
     //   url: '/tasks/' + id,
     //   type: 'DELETE',

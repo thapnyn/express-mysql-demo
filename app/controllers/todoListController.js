@@ -6,7 +6,8 @@ exports.show_list_all_tasks = function(req, res) {
   Task.getAllTask(function(err, task) {
     if (err)
       res.send(err);
-    res.render('index', {tasks: task});
+    res.json(task);
+    // res.render('index', {tasks: task});
   });
 };
 
@@ -14,7 +15,8 @@ exports.list_all_tasks = function(req, res) {
   Task.getAllTask(function(err, task) {
     if (err)
       res.send(err);
-    res.send(task);
+    res.json(task);
+    // res.send(task);
   });
 };
 
@@ -29,8 +31,8 @@ exports.create_a_task = function(req, res) {
     Task.createTask(new_task, function(err, task) {
       if (err)
         res.send(err);
-      // res.json(task);
-      res.redirect('/');
+      res.json(task);
+      // res.redirect('/');
     });
   }
 };
