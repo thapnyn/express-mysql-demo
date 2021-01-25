@@ -20,11 +20,35 @@ body {
   padding: 20px 30px;
   border: 2px solid black;
   box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+  
 }
+.contain-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:  center;
+}
+
+.contain-title #collapse{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #ffa580;
+  border: solid .5px #000;
+
+}
+.contain-title #collapse:hover{
+  color: #fff;
+  background: #000;
+}
+
 
 .box-task h3 {
   font-size: 18pt;
-  margin-bottom: 20px;
+  margin: 10px 10px 10px 0px ;
 }
 
 .form input {
@@ -64,7 +88,12 @@ body {
   color: white;
   border: 1px solid black;
 }
+.btn-contain{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
+}
 .form ::selection {
   background: #ffc8ff;
 }
@@ -78,7 +107,9 @@ body {
   box-shadow: 0 0 0px 1000px #f8f4e5 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
+.gp-search-task{
+  display: none;
+}
 .gp-list-task {
   --background:#f8f4e5;
   --text: #414856;

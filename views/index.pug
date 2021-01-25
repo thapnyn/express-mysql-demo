@@ -1,14 +1,23 @@
 html(lang='en')
   head
     title Template Pug TodoMVC
+    link(rel="stylesheet" ,href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" ,integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" ,crossorigin="anonymous")
     link(rel="stylesheet", href="./css/styles.css")
   body
     .box-task
-      h3 List task
+      .contain-title
+        h3 List task
+        div(id = 'collapse',value = true)
+          i(class="fas fa-compress-arrows-alt")
+      .gp-search-task
+        form.form(action="/search", method="post", autocomplete="off")
+          input.ipt(type="text", placeholder="Search...", maxlength="50", name="searchTask")
+          button(id='btn-search',type="submit") Search
       .gp-add-task
         form.form(action="/tasks", method="post", autocomplete="off")
           input.ipt(type="text", placeholder="Task...", maxlength="50", name="task")
-          button(type="submit") Add task
+          button(id='btn-add',type="submit") Add task
+            
       .gp-list-task
         each task in tasks
           .ipt-wrapper
@@ -20,3 +29,4 @@ html(lang='en')
             span.remove.del-task-item(id =task.id)
     script(src='https://code.jquery.com/jquery-3.5.1.min.js')
     script(src='/js/main.js')
+
