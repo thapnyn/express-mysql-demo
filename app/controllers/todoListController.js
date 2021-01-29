@@ -2,11 +2,13 @@
 
 var Task = require('../models/todoModel.js');
 
+
+
 exports.show_list_all_tasks = function (req, res) {
-  Task.getAllTask(function (err, tasks) {
+  Task.getAllTask(2, function (err, tasks) {
     if (err)
       res.send(err);
-    res.render('index', { tasks: tasks });
+    res.render('login', { tasks: tasks });
 
   });
 };
@@ -21,14 +23,11 @@ exports.search_by_task_name = function (req, res) {
       // console.log(tasks)
       // console.log(result)
       if (result.length == 0) {
-        console.log('ahihi')
-        res.redirect('/')
+        res.render('index', { tasks: result });
       } else {
         res.render('index', { tasks: result });
-        console.log('result', result)
-        // res.redirect('/');
+        // console.log('result', result)
       }
-
     }
   })
 };
@@ -40,7 +39,6 @@ exports.list_all_tasks = function (req, res) {
     res.send(tasks);
   });
 };
-
 
 exports.create_a_task = function (req, res) {
   var new_task = { title: req.body.task, status: 1 };

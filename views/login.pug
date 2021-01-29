@@ -1,0 +1,18 @@
+html(lang='en')
+  head
+    title Template Pug TodoMVC
+    link(rel="stylesheet" ,href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" ,integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" ,crossorigin="anonymous")
+    link(rel="stylesheet", href="./css/styles.css")
+  body
+    .box-task
+      .contain-title
+        .title
+          h3 Login
+      .gp-add-task
+        form.form( autocomplete="off")
+          input.ipt(type="text", placeholder="Username...", maxlength="50", name="userName")
+          input.ipt(type="password", placeholder="Password...", maxlength="50", name="passWord")
+          button(id='btn-login',type="button") Login
+      
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+    script(src='/js/main.js')

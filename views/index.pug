@@ -6,9 +6,10 @@ html(lang='en')
   body
     .box-task
       .contain-title
-        h3 List task
+        .title
+          h3 List task
         div(id = 'collapse',value = true)
-          i(class="fas fa-compress-arrows-alt")
+          i(class="fas fa-sync-alt")
       .gp-search-task
         form.form(action="/search", method="post", autocomplete="off")
           input.ipt(type="text", placeholder="Search...", maxlength="50", name="searchTask")
@@ -19,6 +20,8 @@ html(lang='en')
           button(id='btn-add',type="submit") Add task
             
       .gp-list-task
+        if tasks.length == 0
+          p='Task not found :('
         each task in tasks
           .ipt-wrapper
             if task.status == 0

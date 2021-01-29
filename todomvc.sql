@@ -70,3 +70,37 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+-- Create Database use login with JWT
+create database todomvc;
+CREATE TABLE tasks (
+  id int(11) NOT NULL,
+  id_user int(11) NOT NULL,
+  title varchar(200) NOT NULL,
+  status tinyint(1) NOT NULL DEFAULT 1,
+  created_at datetime NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (id_user) REFERENCES users(id_user)
+);
+use todomvc;
+select * from tasks;
+ALTER TABLE tasks
+  ADD PRIMARY KEY (id);
+ALTER TABLE tasks
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+CREATE TABLE users (
+  id_user int(11) NOT NULL,
+  user_name varchar(20) NOT NULL,
+  pass_word varchar(20) NOT NULL,
+  full_name varchar(200) NOT NULL,
+  tokenJWT varchar(200) NOT NULL
+);
+ALTER TABLE users
+  ADD PRIMARY KEY (id_user);
+ALTER TABLE users
+  MODIFY id_user int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+select * from users;

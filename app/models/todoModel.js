@@ -22,8 +22,8 @@ Task.createTask = function (newTask, result) {
   
 };
 
-Task.getTaskById = function (taskId, result) {
-  sql.query("Select * from tasks where id = ? ", taskId, function (err, res) {
+Task.getTaskById = function (taskId, id_user, result) {
+  sql.query("Select * from tasks where id = ? and id_user = ? ", [taskId,id_user], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -34,8 +34,8 @@ Task.getTaskById = function (taskId, result) {
   });
 };
 
-Task.getAllTask = function (result) {
-  sql.query("Select * from tasks", function (err, res) {
+Task.getAllTask = function (id_user, result) {
+  sql.query("Select * from tasks where id_user = ? ", id_user, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);

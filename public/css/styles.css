@@ -45,7 +45,9 @@ body {
   background: #000;
 }
 
-
+.title{
+  cursor: pointer;
+}
 .box-task h3 {
   font-size: 18pt;
   margin: 10px 10px 10px 0px ;

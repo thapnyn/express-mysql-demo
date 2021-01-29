@@ -2,9 +2,10 @@
 module.exports = function (app) {
 
   var todoList = require('../controllers/todoListController');
+  var user = require('../controllers/userController');
 
-  app.route('/')
-    .get(todoList.show_list_all_tasks);
+  app.route('/login')
+    .post(user.get_info);
 
   app.route('/search')
     .post(todoList.search_by_task_name);
@@ -18,4 +19,6 @@ module.exports = function (app) {
     .put(todoList.update_a_task)
     .delete(todoList.delete_a_task);
 
+  app.route('/')
+    .get(todoList.show_list_all_tasks);
 };
